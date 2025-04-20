@@ -1,0 +1,63 @@
+---
+title: E-Commerce Application
+description: A full-stack e-commerce application with a modern tech stack
+date: 2023-08-20
+tags: [React, Node.js, MongoDB, Express, Redux]
+image: /images/projects/ecommerce.jpg
+github: https://github.com/yourusername/ecommerce-app
+demo: https://your-ecommerce.vercel.app
+featured: true
+---
+
+# E-Commerce Application
+
+This is a full-stack e-commerce application built with the MERN stack (MongoDB, Express, React, Node.js). It features user authentication, product catalog, shopping cart, and payment processing.
+
+## Features
+
+- **User Authentication**: Sign up, login, and profile management
+- **Product Catalog**: Browse products by categories
+- **Shopping Cart**: Add, remove, and update items
+- **Payment Processing**: Secure checkout with Stripe
+- **Admin Dashboard**: Manage products, orders, and users
+- **Responsive Design**: Works on all devices
+
+## Development Process
+
+I started by designing the database schema and setting up the backend API with Express and MongoDB. I implemented authentication using JWT and created RESTful endpoints for managing products, users, and orders.
+
+For the frontend, I used React with Redux for state management. I implemented the shopping cart functionality and integrated Stripe for payment processing.
+
+## Challenges and Solutions
+
+One of the challenges I faced was implementing the shopping cart functionality. I solved this by using Redux to manage the cart state across the application.
+
+Another challenge was handling the file uploads for product images. I solved this by using Cloudinary for image storage and retrieval.
+
+```javascript
+// Example of a Redux action from the project
+export const addToCart = (id, quantity) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.get(`/api/products/${id}`);
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: {
+        product: data._id,
+        name: data.name,
+        price: data.price,
+        image: data.image,
+        quantity,
+      },
+    });
+
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+## Conclusion
+
+Building this e-commerce application was a challenging but rewarding experience. I was able to practice my full-stack development skills and create a complete e-commerce solution from scratch.

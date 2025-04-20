@@ -1,0 +1,113 @@
+---
+title: Getting Started with Next.js
+description: A beginner's guide to building your first Next.js application
+date: 2023-07-15
+tags: [Next.js, React, JavaScript, Tutorial]
+image: /images/blog/nextjs.jpg
+relatedProject: portfolio-website
+---
+
+# Getting Started with Next.js
+
+Next.js has become one of the most popular frameworks for building React applications. In this post, I'll walk you through the basics of getting started with Next.js and building your first application.
+
+## What is Next.js?
+
+Next.js is a React framework that provides a structure and features for your application, including:
+
+- Server-side rendering and static site generation
+- File-based routing
+- API routes
+- Image optimization
+- Font optimization
+- Built-in ESLint configuration
+
+It aims to provide the best developer experience with all the features you need for production.
+
+## Setting Up Your First Next.js Project
+
+Let's start by creating a new Next.js project:
+
+```bash
+npx create-next-app@latest my-first-nextjs-app
+cd my-first-nextjs-app
+```
+
+You'll be prompted to choose various options for your project. I recommend selecting TypeScript, ESLint, and Tailwind CSS for a modern development setup.
+
+## Understanding the Project Structure
+
+After setup, you'll have a project with the following structure:
+
+```text
+my-first-nextjs-app/
+├── app/
+│   ├── page.tsx
+│   ├── layout.tsx
+│   └── globals.css
+├── public/
+├── components/
+├── package.json
+└── next.config.mjs
+```
+
+The `app` directory contains your application code:
+- `page.tsx` - The main page component
+- `layout.tsx` - The root layout component
+- `globals.css` - Global styles
+
+## Creating Your First Page
+
+Let's create a simple "About" page. With the App Router in Next.js, you can simply create a new directory with a page component:
+
+```tsx
+// app/about/page.tsx
+export default function AboutPage() {
+  return (
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold">About Me</h1>
+      <p className="mt-4">
+        I'm a web developer passionate about building modern applications with Next.js and React.
+      </p>
+    </div>
+  );
+}
+```
+
+Now you can access this page at `/about`.
+
+## Fetching Data
+
+Next.js makes data fetching simple. Here's an example of fetching data in a page component:
+
+```tsx
+// app/posts/page.tsx
+async function getPosts() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  return res.json();
+}
+
+export default async function PostsPage() {
+  const posts = await getPosts();
+  
+  return (
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold">Posts</h1>
+      <div className="mt-6 grid gap-4">
+        {posts.slice(0, 5).map((post) => (
+          <div key={post.id} className="p-4 border rounded-lg">
+            <h2 className="text-xl font-semibold">{post.title}</h2>
+            <p className="mt-2">{post.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## Conclusion
+
+This is just the beginning of what you can do with Next.js. As you get more comfortable with the framework, you can explore more advanced features like API routes, middleware, and different rendering strategies.
+
+Next.js provides an excellent developer experience while enabling you to build performant applications. Whether you're building a blog, e-commerce site, or complex web application, Next.js has the tools you need to succeed.

@@ -1,0 +1,64 @@
+---
+title: Task Management App
+description: A productivity app for managing tasks and projects
+date: 2023-06-10
+tags: [React, Firebase, Tailwind CSS, JavaScript]
+image: /images/projects/taskmanager.jpg
+github: https://github.com/yourusername/task-manager
+demo: https://your-taskmanager.vercel.app
+featured: true
+---
+
+# Task Management App
+
+A modern task management application built with React and Firebase. This app helps users organize their tasks, set deadlines, and track progress on different projects.
+
+## Features
+
+- **User Authentication**: Secure login with email or Google
+- **Task Creation**: Create, edit, and delete tasks
+- **Project Organization**: Group tasks by projects
+- **Deadline Reminders**: Get notifications for upcoming deadlines
+- **Progress Tracking**: Track completion status and history
+- **Responsive Design**: Works seamlessly on mobile and desktop
+
+## Development Process
+
+I built this application using React for the frontend and Firebase for the backend services. Firebase Auth handles user authentication, Firestore manages the database, and Firebase Hosting deploys the application.
+
+For the UI, I used Tailwind CSS to create a clean and intuitive interface that adapts to different screen sizes.
+
+## Challenges and Solutions
+
+One challenge was implementing real-time updates for tasks. I solved this by using Firestore's real-time listeners, which automatically update the UI when data changes.
+
+Another challenge was managing complex state across the application. I implemented a custom hook system to abstract Firebase logic and make components more maintainable.
+
+```javascript
+// Example of a custom hook for Firebase integration
+function useFirestore(collection) {
+  const [docs, setDocs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const unsubscribe = db.collection(collection)
+      .orderBy('createdAt', 'desc')
+      .onSnapshot((snapshot) => {
+        const documents = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setDocs(documents);
+        setLoading(false);
+      });
+    
+    return () => unsubscribe();
+  }, [collection]);
+
+  return { docs, loading };
+}
+```
+
+## Conclusion
+
+This project helped me gain experience with Firebase and real-time database operations. It also improved my skills in building intuitive user interfaces and managing application state effectively.

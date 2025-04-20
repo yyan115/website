@@ -1,0 +1,61 @@
+---
+title: Portfolio Website
+description: A modern portfolio website built with Next.js and Tailwind CSS
+date: 2023-10-15
+tags: [Next.js, React, Tailwind CSS, TypeScript]
+image: /images/projects/portfolio.jpg
+github: https://github.com/yourusername/portfolio-website
+demo: https://your-portfolio.vercel.app
+featured: true
+---
+
+# Portfolio Website
+
+This is my personal portfolio website built with Next.js, Tailwind CSS, and TypeScript. It features a responsive design, dark mode, and content management with MDX and Contentlayer.
+
+## Features
+
+- **Modern Tech Stack**: Built with Next.js, React, and TypeScript
+- **Responsive Design**: Looks great on all devices
+- **Dark Mode**: Toggle between light and dark themes
+- **Content Management**: Easy to update with MDX and Contentlayer
+- **Performance Optimized**: Fast loading times and optimized images
+- **SEO Friendly**: Proper metadata and structured data
+
+## Development Process
+
+I started by planning the structure and design of the website. I wanted a clean, minimalist design that would showcase my projects and skills effectively. I chose Next.js for its excellent performance and developer experience.
+
+For styling, I used Tailwind CSS with the shadcn/ui component library. This allowed me to create a consistent design system while maintaining flexibility.
+
+## Challenges and Solutions
+
+One of the challenges I faced was implementing the dark mode toggle. I solved this by using the next-themes library, which provides a simple way to manage themes in Next.js applications.
+
+Another challenge was creating a content management system that would allow me to easily update my projects and blog posts. I solved this by using Contentlayer, which transforms my MDX files into type-safe content objects.
+
+```typescript
+// Example of a component from the project
+function ProjectCard({ project }) {
+  return (
+    <div className="rounded-lg overflow-hidden shadow-lg">
+      <img src={project.image} alt={project.title} className="w-full" />
+      <div className="p-6">
+        <h3 className="text-xl font-bold">{project.title}</h3>
+        <p className="text-gray-700">{project.description}</p>
+        <div className="mt-4 flex gap-2">
+          {project.tags.map((tag) => (
+            <span key={tag} className="bg-gray-200 px-2 py-1 rounded text-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## Conclusion
+
+Building this portfolio was a great learning experience. I was able to practice my skills in React, Next.js, and Tailwind CSS while creating a platform to showcase my work.
